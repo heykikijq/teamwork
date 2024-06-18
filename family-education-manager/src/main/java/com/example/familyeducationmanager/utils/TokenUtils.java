@@ -72,7 +72,7 @@ public class TokenUtils {
 //                    return staticTeacherService.selectById(Integer.valueOf(userId));
 //                }
                 if (RoleEnum.USER.name().equals(role)) {
-                    return staticUserService.findById(Integer.valueOf(userId));
+                    return staticUserService.selectById(Integer.valueOf(userId));
                 }
             }
         } catch (Exception e) {

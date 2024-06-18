@@ -21,7 +21,7 @@ public class UserController {
      */
     @PostMapping("/add")
     public Result add(@RequestBody User user) {
-        userService.addUser(user);
+        userService.add(user);
         return Result.success();
     }
 
@@ -56,8 +56,8 @@ public class UserController {
      * 根据ID查询
      */
     @GetMapping("/selectById/{id}")
-    public Result findById(@PathVariable Integer id) {
-        User user = userService.findById(id);
+    public Result selectById(@PathVariable Integer id) {
+        User user = userService.selectById(id);
         return Result.success(user);
     }
 
@@ -66,7 +66,7 @@ public class UserController {
      */
     @GetMapping("/selectAll")
     public Result selectAll(User user ) {
-        List<User> list = userService.findAll();
+        List<User> list = userService.selectAll(user);
         return Result.success(list);
     }
 

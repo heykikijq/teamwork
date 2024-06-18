@@ -1,4 +1,4 @@
-package com.example.familyeducationmanager.service;
+package com.example.service;
 
 import cn.hutool.core.date.DateUtil;
 import com.example.familyeducationmanager.entity.Account;
@@ -7,8 +7,9 @@ import com.example.familyeducationmanager.mapper.NoticeMapper;
 import com.example.familyeducationmanager.utils.TokenUtils;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
 import java.util.List;
 
 /**

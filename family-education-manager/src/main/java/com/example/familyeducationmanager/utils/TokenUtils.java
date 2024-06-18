@@ -7,6 +7,8 @@ import com.auth0.jwt.algorithms.Algorithm;
 import com.example.familyeducationmanager.common.Constants;
 import com.example.familyeducationmanager.common.enums.RoleEnum;
 import com.example.familyeducationmanager.entity.Account;
+import com.example.familyeducationmanager.service.AdminService;
+import com.example.familyeducationmanager.service.TeacherService;
 import com.example.familyeducationmanager.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,14 +29,14 @@ public class TokenUtils {
 
     private static final Logger log = LoggerFactory.getLogger(TokenUtils.class);
 
-//    private static AdminService staticAdminService;
-//    private static TeacherService staticTeacherService;
+    private static AdminService staticAdminService;
+    private static TeacherService staticTeacherService;
     private static UserService staticUserService;
 
-//    @Resource
-//    AdminService adminService;
-//    @Resource
-//    TeacherService teacherService;
+    @Resource
+    AdminService adminService;
+    @Resource
+    TeacherService teacherService;
     @Resource
     UserService userService;
 
@@ -65,12 +67,12 @@ public class TokenUtils {
                 String userRole = JWT.decode(token).getAudience().get(0);
                 String userId = userRole.split("-")[0];  // 获取用户id
                 String role = userRole.split("-")[1];    // 获取角色
-//                if (RoleEnum.ADMIN.name().equals(role)) {
-//                    return staticAdminService.selectById(Integer.valueOf(userId));
-//                }
-//                if (RoleEnum.TEACHER.name().equals(role)) {
-//                    return staticTeacherService.selectById(Integer.valueOf(userId));
-//                }
+                if (RoleEnum.ADMIN.name().equals(role)) {
+                    return staticAdminService.selectById(Integer.valueOf(userId));
+                }
+                if (RoleEnum.TEACHER.name().equals(role)) {
+                    return staticTeacherService.selectById(Integer.valueOf(userId));
+                }
                 if (RoleEnum.USER.name().equals(role)) {
                     return staticUserService.selectById(Integer.valueOf(userId));
                 }

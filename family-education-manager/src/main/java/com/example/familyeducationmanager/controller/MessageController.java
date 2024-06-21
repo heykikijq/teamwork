@@ -9,6 +9,11 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 import java.util.List;
 
+
+/**
+ * 留言反馈表前端接口
+ */
+
 @RestController
 @RequestMapping("/message")
 public class MessageController {

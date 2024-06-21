@@ -3,12 +3,15 @@ package com.example.familyeducationmanager.mapper;
 
 
 import com.example.familyeducationmanager.entity.Information;
+import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 /**
  * 操作information相关数据接口
 */
+@Mapper
 public interface InformationMapper {
 
     /**

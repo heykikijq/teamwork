@@ -2,13 +2,16 @@ package com.example.familyeducationmanager.mapper;
 
 
 import com.example.familyeducationmanager.entity.Admin;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 /**
  * 操作admin相关数据接口
 */
+@Mapper
 public interface AdminMapper {
 
     /**

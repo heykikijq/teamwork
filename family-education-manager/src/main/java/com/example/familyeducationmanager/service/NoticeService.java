@@ -1,4 +1,4 @@
-package com.example.service;
+package com.example.familyeducationmanager.service;
 
 import cn.hutool.core.date.DateUtil;
 import com.example.familyeducationmanager.entity.Account;

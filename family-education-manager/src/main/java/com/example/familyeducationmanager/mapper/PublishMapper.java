@@ -7,6 +7,7 @@ import java.util.List;
 /**
  * 操作publish相关数据接口
 */
+@Mapper
 public interface PublishMapper {
 
     /**

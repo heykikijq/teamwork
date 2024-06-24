@@ -9,6 +9,7 @@ import java.util.List;
 /**
  * 操作reserve相关数据接口
 */
+@Mapper
 public interface ReserveMapper {
 
     /**

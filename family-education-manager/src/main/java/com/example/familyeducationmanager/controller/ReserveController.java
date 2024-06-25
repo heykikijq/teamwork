@@ -1,8 +1,8 @@
-package com.example.controller;
+package com.example.familyeducationmanager.controller;
 
-import com.example.common.Result;
-import com.example.entity.Message;
-import com.example.service.MessageService;
+import com.example.familyeducationmanager.common.Result;
+import com.example.familyeducationmanager.entity.Reserve;
+import com.example.familyeducationmanager.service.ReserveService;
 import com.github.pagehelper.PageInfo;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,21 +10,21 @@ import javax.annotation.Resource;
 import java.util.List;
 
 /**
- * 留言反馈表前端操作接口
+ * 家教预约表前端操作接口
  **/
 @RestController
-@RequestMapping("/message")
-public class MessageController {
+@RequestMapping("/reserve")
+public class ReserveController {
 
     @Resource
-    private MessageService messageService;
+    private ReserveService reserveService;
 
     /**
      * 新增
      */
     @PostMapping("/add")
-    public Result add(@RequestBody Message message) {
-        messageService.add(message);
+    public Result add(@RequestBody Reserve reserve) {
+        reserveService.add(reserve);
         return Result.success();
     }
 
@@ -33,7 +33,7 @@ public class MessageController {
      */
     @DeleteMapping("/delete/{id}")
     public Result deleteById(@PathVariable Integer id) {
-        messageService.deleteById(id);
+        reserveService.deleteById(id);
         return Result.success();
     }
 
@@ -42,7 +42,7 @@ public class MessageController {
      */
     @DeleteMapping("/delete/batch")
     public Result deleteBatch(@RequestBody List<Integer> ids) {
-        messageService.deleteBatch(ids);
+        reserveService.deleteBatch(ids);
         return Result.success();
     }
 
@@ -50,8 +50,8 @@ public class MessageController {
      * 修改
      */
     @PutMapping("/update")
-    public Result updateById(@RequestBody Message message) {
-        messageService.updateById(message);
+    public Result updateById(@RequestBody Reserve reserve) {
+        reserveService.updateById(reserve);
         return Result.success();
     }
 
@@ -60,16 +60,16 @@ public class MessageController {
      */
     @GetMapping("/selectById/{id}")
     public Result selectById(@PathVariable Integer id) {
-        Message message = messageService.selectById(id);
-        return Result.success(message);
+        Reserve reserve = reserveService.selectById(id);
+        return Result.success(reserve);
     }
 
     /**
      * 查询所有
      */
     @GetMapping("/selectAll")
-    public Result selectAll(Message message ) {
-        List<Message> list = messageService.selectAll(message);
+    public Result selectAll(Reserve reserve ) {
+        List<Reserve> list = reserveService.selectAll(reserve);
         return Result.success(list);
     }
 
@@ -77,10 +77,10 @@ public class MessageController {
      * 分页查询
      */
     @GetMapping("/selectPage")
-    public Result selectPage(Message message,
+    public Result selectPage(Reserve reserve,
                              @RequestParam(defaultValue = "1") Integer pageNum,
                              @RequestParam(defaultValue = "10") Integer pageSize) {
-        PageInfo<Message> page = messageService.selectPage(message, pageNum, pageSize);
+        PageInfo<Reserve> page = reserveService.selectPage(reserve, pageNum, pageSize);
         return Result.success(page);
     }
 

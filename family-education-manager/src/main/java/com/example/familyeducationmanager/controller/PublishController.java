@@ -1,8 +1,8 @@
-package com.example.controller;
+package com.example.familyeducationmanager.controller;
 
-import com.example.common.Result;
-import com.example.entity.Info;
-import com.example.service.InfoService;
+import com.example.familyeducationmanager.common.Result;
+import com.example.familyeducationmanager.entity.Publish;
+import com.example.familyeducationmanager.service.PublishService;
 import com.github.pagehelper.PageInfo;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,21 +10,21 @@ import javax.annotation.Resource;
 import java.util.List;
 
 /**
- * 教员资料表前端操作接口
+ * 家教发布表前端操作接口
  **/
 @RestController
-@RequestMapping("/info")
-public class InfoController {
+@RequestMapping("/publish")
+public class PublishController {
 
     @Resource
-    private InfoService infoService;
+    private PublishService publishService;
 
     /**
      * 新增
      */
     @PostMapping("/add")
-    public Result add(@RequestBody Info info) {
-        infoService.add(info);
+    public Result add(@RequestBody Publish publish) {
+        publishService.add(publish);
         return Result.success();
     }
 
@@ -33,7 +33,7 @@ public class InfoController {
      */
     @DeleteMapping("/delete/{id}")
     public Result deleteById(@PathVariable Integer id) {
-        infoService.deleteById(id);
+        publishService.deleteById(id);
         return Result.success();
     }
 
@@ -42,7 +42,7 @@ public class InfoController {
      */
     @DeleteMapping("/delete/batch")
     public Result deleteBatch(@RequestBody List<Integer> ids) {
-        infoService.deleteBatch(ids);
+        publishService.deleteBatch(ids);
         return Result.success();
     }
 
@@ -50,8 +50,8 @@ public class InfoController {
      * 修改
      */
     @PutMapping("/update")
-    public Result updateById(@RequestBody Info info) {
-        infoService.updateById(info);
+    public Result updateById(@RequestBody Publish publish) {
+        publishService.updateById(publish);
         return Result.success();
     }
 
@@ -60,22 +60,16 @@ public class InfoController {
      */
     @GetMapping("/selectById/{id}")
     public Result selectById(@PathVariable Integer id) {
-        Info info = infoService.selectById(id);
-        return Result.success(info);
-    }
-
-    @GetMapping("/selectByTeacherId/{id}")
-    public Result selectByTeacherId(@PathVariable Integer id) {
-        Info info = infoService.selectByTeacherId(id);
-        return Result.success(info);
+        Publish publish = publishService.selectById(id);
+        return Result.success(publish);
     }
 
     /**
      * 查询所有
      */
     @GetMapping("/selectAll")
-    public Result selectAll(Info info ) {
-        List<Info> list = infoService.selectAll(info);
+    public Result selectAll(Publish publish ) {
+        List<Publish> list = publishService.selectAll(publish);
         return Result.success(list);
     }
 
@@ -83,10 +77,10 @@ public class InfoController {
      * 分页查询
      */
     @GetMapping("/selectPage")
-    public Result selectPage(Info info,
+    public Result selectPage(Publish publish,
                              @RequestParam(defaultValue = "1") Integer pageNum,
                              @RequestParam(defaultValue = "10") Integer pageSize) {
-        PageInfo<Info> page = infoService.selectPage(info, pageNum, pageSize);
+        PageInfo<Publish> page = publishService.selectPage(publish, pageNum, pageSize);
         return Result.success(page);
     }
 

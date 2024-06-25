@@ -1,6 +1,7 @@
 package com.example.familyeducationmanager.mapper;
 
 import com.example.familyeducationmanager.entity.Type;
+import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 

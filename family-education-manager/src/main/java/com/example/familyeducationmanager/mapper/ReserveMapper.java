@@ -1,6 +1,7 @@
 package com.example.familyeducationmanager.mapper;
 
 import com.example.familyeducationmanager.entity.Reserve;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
